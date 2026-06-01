@@ -84,19 +84,19 @@ const uploadResourceAttachment = multer({
 router.get('/stats', async (req, res) => {
   try {
     const [totalResult] = await db.execute(
-      'SELECT COUNT(*) as total FROM users WHERE role = "student"'
+      'SELECT COUNT(*) as total FROM users WHERE role = 'student''
     );
     const [pendingResult] = await db.execute(
-      'SELECT COUNT(*) as pending FROM users WHERE role = "student" AND payment_status = "pending"'
+      'SELECT COUNT(*) as pending FROM users WHERE role = 'student' AND payment_status = 'pending''
     );
     const [approvedResult] = await db.execute(
-      'SELECT COUNT(*) as approved FROM users WHERE role = "student" AND payment_status = "approved"'
+      'SELECT COUNT(*) as approved FROM users WHERE role = 'student' AND payment_status = 'approved''
     );
     const [basicResult] = await db.execute(
-      'SELECT COUNT(*) as basic FROM users WHERE role = "student" AND selected_package = "basic"'
+      'SELECT COUNT(*) as basic FROM users WHERE role = 'student' AND selected_package = 'basic''
     );
     const [premiumResult] = await db.execute(
-      'SELECT COUNT(*) as premium FROM users WHERE role = "student" AND selected_package = "premium"'
+      'SELECT COUNT(*) as premium FROM users WHERE role = 'student' AND selected_package = 'premium''
     );
 
     return res.json({
@@ -129,7 +129,7 @@ router.get('/students', async (req, res) => {
          INNER JOIN (SELECT student_id, MAX(id) as max_id FROM meetings GROUP BY student_id) m2 
          ON m1.id = m2.max_id
        ) m ON u.id = m.student_id 
-       WHERE u.role = "student" 
+       WHERE u.role = 'student' 
        ORDER BY u.created_at DESC`
     );
     return res.json({ success: true, students });
@@ -153,7 +153,7 @@ router.post('/approve/:id', async (req, res) => {
 
     // Fetch student details for email
     const [students] = await db.execute(
-      'SELECT full_name, email, selected_package, payment_status as current_status FROM users WHERE id = ? AND role = "student"',
+      'SELECT full_name, email, selected_package, payment_status as current_status FROM users WHERE id = ? AND role = 'student'',
       [studentId]
     );
 
@@ -167,7 +167,7 @@ router.post('/approve/:id', async (req, res) => {
 
     // Update student payment status in DB
     const [result] = await db.execute(
-      'UPDATE users SET payment_status = ?, progress_step = ? WHERE id = ? AND role = "student"',
+      'UPDATE users SET payment_status = ?, progress_step = ? WHERE id = ? AND role = 'student'',
       [payment_status, newProgressStep, studentId]
     );
 
@@ -218,7 +218,7 @@ router.post('/upload-receipt/:id', (req, res) => {
       const receiptPath = `/uploads/receipts/${req.file.filename}`;
 
       const [result] = await db.execute(
-        'UPDATE users SET receipt_path = ? WHERE id = ? AND role = "student"',
+        'UPDATE users SET receipt_path = ? WHERE id = ? AND role = 'student'',
         [receiptPath, studentId]
       );
 
@@ -252,7 +252,7 @@ router.post('/schedule-meeting/:id', async (req, res) => {
 
     // Verify student is premium
     const [students] = await db.execute(
-      'SELECT selected_package FROM users WHERE id = ? AND role = "student"',
+      'SELECT selected_package FROM users WHERE id = ? AND role = 'student'',
       [studentId]
     );
 
@@ -376,7 +376,7 @@ router.post('/progress/:id', async (req, res) => {
     }
 
     const [result] = await db.execute(
-      'UPDATE users SET progress_step = ? WHERE id = ? AND role = "student"',
+      'UPDATE users SET progress_step = ? WHERE id = ? AND role = 'student'',
       [progress_step, studentId]
     );
 
