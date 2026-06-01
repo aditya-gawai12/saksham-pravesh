@@ -1,4 +1,5 @@
 # Saksham Pravesh MHT CET Counseling Web Platform (MVP)
+We don't just advise, we automate the entire counseling pipeline from student registration to college placement.
 
 A Node.js & Express-based web platform designed to automate student registration for MHT CET engineering/pharmacy/nursing counseling, with manual payment verification and real-time announcement board controls.
 
