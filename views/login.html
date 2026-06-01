@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — Saksham Pravesh MHT CET Counseling Platform</title>
+  <meta name="description" content="Sign in to your Saksham Pravesh student or admin dashboard. Access counseling notices, meeting links, and admission resources.">
+  <meta name="robots" content="noindex, nofollow">
+  <!-- Bootstrap 5.3 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-gradient-hero py-5 min-vh-100 d-flex align-items-center">
+
+  <div class="container">
+    <div class="row justify-content-center w-100 m-0">
+      <div class="col-md-6 col-lg-4 p-0">
+        
+        <!-- Brand Link -->
+        <div class="text-center mb-4">
+          <a href="/" class="navbar-brand text-gradient fs-2 fw-extrabold text-decoration-none d-flex align-items-center justify-content-center">
+            <img src="/images/logo.png" alt="Saksham Pravesh Logo" height="50" class="me-2">
+            SAKSHAM PRAVESH
+          </a>
+        </div>
+
+        <!-- Glass Card Login Form -->
+        <div class="glass-card p-5">
+          <h3 class="fw-bold text-center text-light mb-2">Welcome Back</h3>
+          <p class="text-muted text-center small mb-4">Sign in to access your dashboard.</p>
+          
+          <div id="error-message" class="alert alert-danger d-none" role="alert"></div>
+
+          <form id="login-form" novalidate>
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="email" required placeholder="e.g. name@domain.com">
+            </div>
+
+            <!-- Password -->
+            <div class="mb-4">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" required placeholder="Enter password">
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary-custom w-100 py-3 mt-2">
+              <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+            </button>
+          </form>
+
+          <hr class="border-secondary opacity-25 my-4">
+          <p class="text-center text-muted mb-0 small">
+            New aspirant? <a href="/register" class="text-info fw-bold text-decoration-none">Create Account</a>
+          </p>
+        </div>
+
+        <!-- Back to Home Link -->
+        <div class="text-center mt-3">
+          <a href="/" class="text-muted text-decoration-none small"><i class="bi bi-arrow-left me-1"></i> Back to Homepage</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 Bundle JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Client JavaScript -->
+  <script src="/js/main.js"></script>
+</body>
+</html>

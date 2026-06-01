@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard — Saksham Pravesh Counseling Portal</title>
+  <meta name="description"
+    content="Your personalized MHT CET counseling dashboard. View payment status, package details, upcoming meetings, and counseling notices.">
+  <meta name="robots" content="noindex, nofollow">
+  <!-- Bootstrap 5.3 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="bg-gradient-hero py-4" id="student-dashboard">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent mb-4">
+    <div class="container">
+      <a class="navbar-brand text-gradient fs-3 d-flex align-items-center" href="/">
+        <img src="/images/logo.png" alt="Saksham Pravesh Logo" height="40" class="me-2">
+        SAKSHAM PRAVESH
+      </a>
+      <div class="d-flex align-items-center gap-3">
+        <span class="text-light d-none d-sm-inline">Welcome, <span id="welcome-name"
+            class="fw-bold">Student</span></span>
+        <button id="logout-btn" class="btn btn-outline-danger btn-sm">
+          <i class="bi bi-box-arrow-right me-1"></i>Sign Out
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <div class="container">
+
+    <!-- Counseling Progress Tracker -->
+    <div class="progress-tracker d-none d-md-flex mt-2 mb-5 mx-auto" style="max-width: 800px;" id="counseling-progress">
+      <div class="progress-step completed" id="step-register">
+        <div class="step-icon"><i class="bi bi-check-lg"></i></div>
+        <div class="step-label mt-2">Registered</div>
+      </div>
+      <div class="progress-step active" id="step-payment">
+        <div class="step-icon"><i class="bi bi-credit-card"></i></div>
+        <div class="step-label mt-2">Payment Verification</div>
+      </div>
+      <div class="progress-step" id="step-docs">
+        <div class="step-icon"><i class="bi bi-file-earmark-text"></i></div>
+        <div class="step-label mt-2" id="step-cap-label">Cap Rounds Active</div>
+      </div>
+      <div class="progress-step" id="step-allocated">
+        <div class="step-icon"><i class="bi bi-building"></i></div>
+        <div class="step-label mt-2">Seat Allocated</div>
+      </div>
+    </div>
+
+    <!-- Top Grid Layout -->
+    <div class="row g-4 mb-4">
+      <div class="col-lg-7">
+        <!-- Profile Summary Card -->
+    <div class="glass-card p-4 mb-4">
+      <div class="row align-items-center g-3">
+        <div class="col-md-8">
+          <div class="d-flex align-items-center gap-3 mb-3 mb-md-0">
+            <div class="profile-avatar" id="profile-avatar">--</div>
+            <div>
+              <h4 class="fw-bold text-light mb-1" id="profile-name">Loading...</h4>
+              <div class="d-flex flex-wrap gap-3 text-muted small">
+                <span><i class="bi bi-envelope me-1"></i><span id="profile-email">-</span></span>
+                <span><i class="bi bi-telephone me-1"></i><span id="profile-phone">-</span></span>
+              </div>
+              <div class="d-flex flex-wrap gap-3 mt-1 text-muted small">
+                <span><i class="bi bi-bar-chart me-1"></i>Percentile: <strong class="text-info"
+                    id="profile-percentile">-</strong></span>
+                <span><i class="bi bi-tag me-1"></i>Category: <span id="profile-category">-</span></span>
+                <span><i class="bi bi-cpu me-1"></i>Branch: <span id="profile-branch">-</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 text-md-end">
+          <span id="payment-status-badge" class="badge-status badge-status-pending">
+            Pending Payment Verification
+          </span>
+        </div>
+      </div>
+    </div>
+
+      </div>
+      <div class="col-lg-5">
+        <!-- Package Details Card -->
+        <div class="glass-card p-4 h-100" id="package-details-card">
+      <div class="row align-items-center g-3">
+        <div class="col-md-6">
+          <div class="d-flex align-items-center gap-3">
+            <div class="package-icon" id="package-icon">
+              <i class="bi bi-box"></i>
+            </div>
+            <div>
+              <small class="text-muted d-block">Your Package</small>
+              <h5 class="fw-bold text-light mb-0" id="package-name">Loading...</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <!-- Receipt Download (visible if receipt uploaded) -->
+          <a href="#" class="btn btn-sm btn-secondary-custom d-none" id="download-receipt-btn" target="_blank">
+            <i class="bi bi-file-earmark-pdf me-1"></i>Download Receipt
+          </a>
+        </div>
+      </div>
+      <hr class="border-secondary opacity-25 my-3">
+      <div id="package-features" class="text-muted small">
+        <!-- Filled dynamically -->
+      </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- PENDING PAYMENT VIEW SECTION -->
+      <div id="pending-status-section" class="col-12 d-none animate-fade-in">
+        <div class="glass-card p-5 border border-warning border-opacity-20 interactive-card">
+          <div class="text-center py-4">
+            <i class="bi bi-cash-stack text-warning display-3 mb-4"></i>
+            <h3 class="fw-bold text-light">Payment Verification Pending</h3>
+            <p class="text-muted mx-auto mb-4" style="max-width: 600px;">
+              Your enrollment has been successfully recorded! To unlock counseling dashboards, option forms preparation
+              guides, and join live 1-on-1 Google Meet coaching sessions, please contact our counselor to complete
+              payment.
+            </p>
+
+            <!-- Contact for Payment -->
+            <div class="bg-dark bg-opacity-50 p-4 rounded border border-secondary border-opacity-25 mx-auto text-start"
+              style="max-width: 500px;">
+              <h5 class="fw-bold text-warning mb-3"><i class="bi bi-chat-dots me-2"></i>Contact Us to Complete Payment
+              </h5>
+              <p class="text-muted mb-3">Reach out to our counselor directly for pricing details and payment
+                instructions:</p>
+              <div class="d-flex flex-column gap-2">
+                <a href="tel:+919011388302" class="btn btn-outline-light btn-sm text-start pulse-button border-info">
+                  <i class="bi bi-telephone-fill me-2 text-info"></i>Call: +91 90113 88302
+                </a>
+                <a href="https://wa.me/919011388302?text=Hi%2C%20I%20have%20registered%20on%20Saksham%20Pravesh.%20Please%20share%20payment%20details."
+                  target="_blank" class="btn btn-outline-light btn-sm text-start pulse-button border-success">
+                  <i class="bi bi-whatsapp me-2 text-success"></i>WhatsApp: +91 90113 88302
+                </a>
+                <a href="mailto:sakshampravesh2025@gmail.com" class="btn btn-outline-light btn-sm text-start">
+                  <i class="bi bi-envelope-fill me-2 text-info"></i>Email: sakshampravesh2025@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <div class="mt-4 text-muted small">
+              <i class="bi bi-clock me-1"></i> Counselor verifies payments within 24 hours.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- APPROVED PLAN VIEW SECTION -->
+      <div id="approved-status-section" class="col-12 d-none">
+        <div class="row g-4">
+
+          <!-- Next Meeting Card (Premium only) -->
+          <div class="col-12 d-none" id="meeting-card-wrapper">
+            <div class="glass-card p-4 border border-info border-opacity-25 meeting-glow">
+              <div
+                class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3">
+                <div>
+                  <h5 class="fw-bold text-light mb-1"><i class="bi bi-camera-video-fill text-info me-2"></i>Your Next
+                    1-on-1 Session</h5>
+                  <p class="text-muted mb-1 small">
+                    <i class="bi bi-calendar3 me-1"></i><span id="meeting-datetime">-</span>
+                  </p>
+                  <p class="text-muted mb-0 small" id="meeting-notes-display" style="display:none">
+                    <i class="bi bi-journal-text me-1"></i><span id="meeting-notes-text">-</span>
+                  </p>
+                </div>
+                <a href="#" class="btn btn-info text-dark fw-bold" id="join-meeting-btn" target="_blank">
+                  <i class="bi bi-camera-video me-1"></i>Join Google Meet
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notices List Column -->
+          <div class="col-lg-8">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <h4 class="fw-bold text-light mb-0"><i class="bi bi-bell-fill me-2 text-info"></i>Counseling Board &
+                Notices</h4>
+              <span class="badge bg-primary text-light px-2 py-1" style="font-size: 0.8rem">Live Feed</span>
+            </div>
+
+            <div id="announcements-list">
+              <!-- Dynamically populated via JS -->
+              <div class="text-center py-5 text-muted">
+                <div class="spinner-border text-info" role="status">
+                  <span class="visually-hidden">Loading notices...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Resources Column -->
+          <div class="col-lg-4">
+            <h4 class="fw-bold text-light mb-4"><i class="bi bi-folder2-open me-2 text-info"></i>Important Downloads
+            </h4>
+
+            <div class="glass-card p-4 mb-4 interactive-card">
+              <h5 class="fw-bold text-light mb-3">Resource Center</h5>
+              <div class="d-grid gap-3" id="dynamic-resources-list">
+                <!-- Populated dynamically by main.js -->
+              </div>
+            </div>
+
+            <!-- Counseling Warning / Tips -->
+            <div class="glass-card p-4 border border-info border-opacity-15">
+              <h5 class="fw-bold text-info mb-2"><i class="bi bi-shield-shaded me-2"></i>Counselor Guidance Tip</h5>
+              <p class="text-muted small mb-0">
+                During Cap Round 1, always choose your absolute top-dream colleges in the first 5 preferences. If you
+                get allocated any of your top 3 seats, auto-freeze applies. Check notices daily for live links.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Bootstrap 5 Bundle JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Client JavaScript -->
+  <script src="/js/main.js"></script>
+</body>
+
+</html>

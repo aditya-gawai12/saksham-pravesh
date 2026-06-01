@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Console — Saksham Pravesh Counselor Panel</title>
+  <meta name="description" content="Saksham Pravesh admin console for managing student registrations, payment approvals, and counseling sessions.">
+  <meta name="robots" content="noindex, nofollow">
+  <!-- Bootstrap 5.3 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-gradient-hero py-4" id="admin-dashboard">
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent mb-4">
+    <div class="container">
+      <a class="navbar-brand text-gradient fs-3 d-flex align-items-center" href="/">
+        <img src="/images/logo.png" alt="Saksham Pravesh Logo" height="40" class="me-2">
+        SAKSHAM PRAVESH <span class="fs-6 text-muted font-normal ms-2">(Admin Console)</span>
+      </a>
+      <div class="d-flex align-items-center gap-3">
+        <span class="text-light"><i class="bi bi-person-badge me-2 text-info"></i>Counselor Mode</span>
+        <button id="logout-btn" class="btn btn-outline-danger btn-sm">
+          <i class="bi bi-box-arrow-right me-1"></i>Sign Out
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Stats Overview Cards -->
+    <div class="row g-3 mb-4" id="stats-row">
+      <div class="col-6 col-lg-3">
+        <div class="glass-card p-3 text-center stat-card">
+          <i class="bi bi-people-fill text-info fs-3"></i>
+          <h3 class="fw-bold text-light mb-0 mt-2" id="stat-total">-</h3>
+          <small class="text-muted">Total Students</small>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="glass-card p-3 text-center stat-card">
+          <i class="bi bi-hourglass-split text-warning fs-3"></i>
+          <h3 class="fw-bold text-light mb-0 mt-2" id="stat-pending">-</h3>
+          <small class="text-muted">Pending Payments</small>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="glass-card p-3 text-center stat-card">
+          <i class="bi bi-check-circle-fill text-success fs-3"></i>
+          <h3 class="fw-bold text-light mb-0 mt-2" id="stat-approved">-</h3>
+          <small class="text-muted">Approved & Enrolled</small>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="glass-card p-3 text-center stat-card">
+          <i class="bi bi-stars text-info fs-3"></i>
+          <h3 class="fw-bold text-light mb-0 mt-2" id="stat-premium">-</h3>
+          <small class="text-muted">Premium Students</small>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      
+      <!-- Right Side Panel: Post Notice Form -->
+      <div class="col-lg-4 order-lg-2">
+        <div class="glass-card p-4">
+          <h4 class="fw-bold text-light mb-3"><i class="bi bi-broadcast text-info me-2"></i>Post Notice or Meet Link</h4>
+          <p class="text-muted small">Submit notifications that will appear on approved student dashboards.</p>
+          
+          <div id="notice-message" class="alert d-none" role="alert"></div>
+
+          <form id="notice-form" novalidate>
+            <!-- Title -->
+            <div class="mb-3">
+              <label for="notice-title" class="form-label">Notice Title / Announcement</label>
+              <textarea class="form-control" id="notice-title" rows="3" required placeholder="e.g. Cap Round 1 option lists are now active! Download below."></textarea>
+            </div>
+
+            <!-- Optional Google Meet Link -->
+            <div class="mb-3">
+              <label for="notice-link" class="form-label">Google Meet Link (Optional)</label>
+              <input type="url" class="form-control" id="notice-link" placeholder="e.g. https://meet.google.com/abc-defg-hij">
+            </div>
+
+            <!-- Scheduled Time -->
+            <div class="mb-3">
+              <label for="notice-time" class="form-label">Scheduled Time (Optional)</label>
+              <input type="datetime-local" class="form-control" id="notice-time">
+            </div>
+
+            <!-- Optional Attachment (PDF/Image) -->
+            <div class="mb-4">
+              <label for="notice-file" class="form-label">Attachment (Optional, PDF or Image)</label>
+              <input type="file" class="form-control" id="notice-file" accept=".pdf,image/*">
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary-custom w-100 py-3">
+              <i class="bi bi-send-fill me-2"></i>Publish Notice
+            </button>
+          </form>
+        </div>
+
+        <div class="glass-card p-4 mt-4">
+          <h4 class="fw-bold text-light mb-3"><i class="bi bi-cloud-arrow-up text-success me-2"></i>Upload Resource</h4>
+          <p class="text-muted small">Upload PDFs or Excel files to the Student Resource Center.</p>
+          
+          <div id="resource-message" class="alert d-none" role="alert"></div>
+
+          <form id="resource-form" novalidate>
+            <div class="mb-3">
+              <label for="resource-title" class="form-label">Resource Title</label>
+              <input type="text" class="form-control" id="resource-title" required placeholder="e.g. Previous Year Cutoffs">
+            </div>
+
+            <div class="mb-3">
+              <label for="resource-desc" class="form-label">Description (Optional)</label>
+              <textarea class="form-control" id="resource-desc" rows="2" placeholder="e.g. Detailed HSL category-wise cutoff logs."></textarea>
+            </div>
+
+            <div class="mb-4">
+              <label for="resource-file" class="form-label">File Attachment (PDF, Image, Excel)</label>
+              <input type="file" class="form-control" id="resource-file" accept=".pdf,image/*,.xlsx,.xls,.csv" required>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100 py-3">
+              <i class="bi bi-upload me-2"></i>Upload to Resource Center
+            </button>
+          </form>
+        </div>
+
+        <div class="glass-card p-4 mt-4 border border-info border-opacity-15">
+          <h5 class="fw-bold text-info mb-2"><i class="bi bi-info-circle me-1"></i>Counselor Reminder</h5>
+          <p class="text-muted small mb-0">
+            Approved students can instantly view posted notices and click meeting links in real-time. Unverified (pending) students will only see payment instructions.
+          </p>
+        </div>
+      </div>
+
+      <!-- Left Side Panel: Registered Students Table -->
+      <div class="col-lg-8 order-lg-1">
+        <div class="glass-card p-4">
+          <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-4">
+            <h4 class="fw-bold text-light mb-0"><i class="bi bi-people-fill text-info me-2"></i>Registered Aspirants</h4>
+            <div class="d-flex gap-2 align-items-center">
+              <input type="text" id="search-students" class="form-control form-control-sm" placeholder="Search by name or email..." style="width: 200px;">
+              <select id="filter-status" class="form-select form-select-sm" style="width: 130px;">
+                <option value="all">All Status</option>
+                <option value="pending">Pending</option>
+                <option value="approved">Approved</option>
+              </select>
+              <button onclick="loadAdminDashboard()" class="btn btn-sm btn-secondary-custom"><i class="bi bi-arrow-clockwise me-1"></i>Refresh</button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table custom-table table-hover align-middle">
+              <thead>
+                <tr>
+                  <th>Student Info</th>
+                  <th>Contact</th>
+                  <th>%ile</th>
+                  <th>Package</th>
+                  <th>Status</th>
+                  <th>Receipt</th>
+                  <th>Meeting</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="students-table-body">
+                <!-- Dynamically populated via JS -->
+                <tr>
+                  <td colspan="7" class="text-center py-5">
+                    <div class="spinner-border text-info" role="status">
+                      <span class="visually-hidden">Loading registered student records...</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Upload Receipt Modal -->
+  <div class="modal fade" id="uploadReceiptModal" tabindex="-1" aria-labelledby="uploadReceiptModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark border border-secondary border-opacity-25" style="border-radius: 16px;">
+        <div class="modal-header border-secondary border-opacity-25">
+          <h5 class="modal-title text-light" id="uploadReceiptModalLabel"><i class="bi bi-file-earmark-pdf text-danger me-2"></i>Upload Payment Receipt</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-muted small">Upload a PDF receipt for: <strong class="text-light" id="receipt-student-name">-</strong></p>
+          <input type="hidden" id="receipt-student-id">
+          <div id="receipt-upload-message" class="alert d-none mb-3" role="alert"></div>
+          <input type="file" class="form-control" id="receipt-file" accept=".pdf">
+          <small class="text-muted d-block mt-2"><i class="bi bi-info-circle me-1"></i>Only PDF files allowed. Max 5MB.</small>
+        </div>
+        <div class="modal-footer border-secondary border-opacity-25">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary-custom btn-sm" id="upload-receipt-btn">
+            <i class="bi bi-upload me-1"></i>Upload Receipt
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Schedule Meeting Modal -->
+  <div class="modal fade" id="scheduleMeetingModal" tabindex="-1" aria-labelledby="scheduleMeetingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark border border-secondary border-opacity-25" style="border-radius: 16px;">
+        <div class="modal-header border-secondary border-opacity-25">
+          <h5 class="modal-title text-light" id="scheduleMeetingModalLabel"><i class="bi bi-camera-video-fill text-info me-2"></i>Schedule 1-on-1 Meeting</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-muted small">Schedule a Google Meet for: <strong class="text-light" id="meeting-student-name">-</strong></p>
+          <input type="hidden" id="meeting-student-id">
+          <div id="meeting-message" class="alert d-none mb-3" role="alert"></div>
+          <div class="mb-3">
+            <label for="meeting-link-input" class="form-label">Google Meet Link</label>
+            <input type="url" class="form-control" id="meeting-link-input" placeholder="https://meet.google.com/abc-defg-hij" required>
+          </div>
+          <div class="mb-3">
+            <label for="meeting-time-input" class="form-label">Scheduled Date & Time</label>
+            <input type="datetime-local" class="form-control" id="meeting-time-input" required>
+          </div>
+          <div class="mb-3">
+            <label for="meeting-notes-input" class="form-label">Session Notes (Optional)</label>
+            <textarea class="form-control" id="meeting-notes-input" rows="2" placeholder="e.g. Discussion on Cap Round 2 preferences"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer border-secondary border-opacity-25">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary-custom btn-sm" id="schedule-meeting-btn">
+            <i class="bi bi-calendar-plus me-1"></i>Schedule Meeting
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 Bundle JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Client JavaScript -->
+  <script src="/js/main.js"></script>
+</body>
+</html>

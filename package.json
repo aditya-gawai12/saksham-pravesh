@@ -1,0 +1,24 @@
+{
+  "name": "saksham-pravesh",
+  "version": "1.0.0",
+  "description": "Saksham Pravesh Web Platform for MHT CET Counselling Service Automation",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "get-image-colors": "^4.0.1",
+    "multer": "^2.1.1",
+    "mysql2": "^3.9.7",
+    "nodemailer": "^8.0.10"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "private": true
+}
