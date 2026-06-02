@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -19,433 +19,342 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sakshampravesh.com/">
   <meta property="og:locale" content="en_IN">
-  <!-- Bootstrap 5.3 CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-  <!-- Custom Styles -->
   <link rel="stylesheet" href="/css/style.css">
-  <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "name": "Saksham Pravesh",
-    "description": "Maharashtra's trusted MHT CET counseling platform for engineering college admissions. Personalized guidance for Cap Rounds and Spot Rounds.",
-    "url": "https://sakshampravesh.com",
-    "foundingDate": "2023",
-    "areaServed": "Maharashtra, India",
-    "serviceType": "MHT CET Counseling & College Admission Guidance",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+91-90113-88302",
-      "contactType": "customer service",
-      "availableLanguage": ["English", "Hindi", "Marathi"]
-    }
-  }
-  </script>
 </head>
 
-<body class="bg-gradient-hero">
+<body>
 
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent py-4" aria-label="Main navigation">
+  <nav class="navbar navbar-expand-lg bg-white py-3 border-bottom border-light">
     <div class="container">
-      <a class="navbar-brand text-gradient fs-3 d-flex align-items-center" href="/" aria-label="Saksham Pravesh Home">
-        <img src="/images/logo.png" alt="Saksham Pravesh Logo" height="40" class="me-2">
-        SAKSHAM PRAVESH
+      <a class="navbar-brand brand-font fw-bold fs-4 d-flex align-items-center" href="/">
+        <img src="/images/logo.png" alt="Logo" height="32" class="me-2" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%232563eb\'%3E%3Cpath d=\'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\'/%3E%3C/svg%3E'">
+        Saksham Pravesh
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav align-items-center gap-3 mt-3 mt-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#packages">Packages</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#testimonials">Testimonials</a>
-          </li>
-          <li class="nav-item d-none d-lg-flex align-items-center">
-            <a class="nav-link text-danger" href="https://www.youtube.com/channel/UC3swZ33081xBUKOtT-xbA_w" target="_blank" rel="noopener noreferrer" aria-label="YouTube Channel">
-              <i class="bi bi-youtube fs-5"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="btn btn-secondary-custom btn-sm" href="/login">Sign In</a>
-          </li>
-          <li class="nav-item">
-            <a class="btn btn-primary-custom btn-sm" href="/register">Register Now</a>
-          </li>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav gap-4">
+          <li class="nav-item"><a class="nav-link text-primary fw-medium border-bottom border-primary border-2" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-muted" href="#packages">Packages</a></li>
+          <li class="nav-item"><a class="nav-link text-muted" href="#testimonials">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link text-muted" href="#faq">FAQs</a></li>
         </ul>
+      </div>
+      <div class="d-none d-lg-flex gap-3">
+        <a class="nav-link text-muted fw-medium d-flex align-items-center" href="/login">Sign In</a>
+        <a class="btn btn-primary-custom" href="/register">Register</a>
       </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <main>
-    <section class="py-5 my-md-5" aria-label="Hero section">
-      <div class="container">
-        <div class="row align-items-center g-5">
-          <div class="col-lg-7 text-center text-lg-start animate-fade-in">
-            <span
-              class="badge bg-primary bg-opacity-25 text-info px-3 py-2 rounded-pill mb-3 border border-info border-opacity-25">
-              <i class="bi bi-patch-check-fill me-2 text-info" aria-hidden="true"></i>3+ Years of Verified Placement
-              Success
-            </span>
-            <h1 class="display-3 fw-bold mb-4 text-light leading-tight">
-              Unlock Top Maharashtra Engineering Colleges At <span class="text-gradient">Low Percentiles</span>
-            </h1>
-            <p class="lead text-info fw-bold mb-3">Admission made clear, your dream college is here</p>
-            <p class="lead text-muted mb-5">
-              MHT CET option form filling and counseling system tailored specifically for aspirants and parents. We
-              design optimal college preference lists based on category cutoffs, branches, and spot rounds to maximize
-              your admission chances.
+  <section class="hero-section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <div class="badge bg-white bg-opacity-10 text-white rounded-pill px-3 py-2 mb-4 border border-light border-opacity-25 small">
+            <i class="bi bi-check-circle-fill text-primary me-2"></i>3+ Years of Verified Placement Success
+          </div>
+          <h1 class="display-4 fw-bold mb-4 leading-tight">
+            Unlock Top Maharashtra Engineering Colleges At <span class="text-yellow">Low Percentiles</span>
+          </h1>
+          <p class="lead text-white-50 mb-5 fs-6">
+            Admission made clear, your dream college is here. MHT CET option form filling and counseling system tailored specifically for aspirants and parents.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="/register" class="btn btn-primary-custom d-flex align-items-center">
+              Start Counseling Registration <i class="bi bi-arrow-right-short ms-2 fs-5"></i>
+            </a>
+            <a href="#packages" class="btn btn-outline-light rounded-3 px-4 fw-medium">
+              View Our Packages
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-5 offset-lg-1 d-none d-lg-block">
+          <div class="glass-card-dark p-5">
+            <div class="d-flex align-items-center mb-4">
+              <div class="bg-primary p-3 rounded-3 me-3">
+                <i class="bi bi-shield-check text-white fs-3"></i>
+              </div>
+              <div>
+                <h3 class="h5 fw-bold mb-1">Parent-Trusted Process</h3>
+                <span class="small text-white-50">Secure, Transparent, Expert-Led</span>
+              </div>
+            </div>
+            <p class="text-white-50 small mb-4">
+              We handle Cap Rounds, Spot Round Counseling, and document verification to guide you step-by-step into Maharashtra's top institutes.
             </p>
-            <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
-              <a href="/register" class="btn btn-primary-custom btn-lg">
-                Start Counseling Registration <i class="bi bi-arrow-right-short ms-1" aria-hidden="true"></i>
-              </a>
-              <a href="#packages" class="btn btn-secondary-custom btn-lg">
-                View Our Packages
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-5 d-none d-lg-block">
-            <div class="glass-card p-5 text-center position-relative overflow-hidden" aria-label="Platform statistics">
-              <i class="bi bi-shield-check text-info display-1 mb-4" aria-hidden="true"></i>
-              <h2 class="h4 fw-bold text-light">Parent-Trusted Process</h2>
-              <p class="text-muted small">
-                We handle Cap Rounds, Spot Round Counseling, and documents verification to guide you step-by-step into
-                Maharashtra's top institutes.
-              </p>
-              <hr class="border-secondary opacity-25 my-4">
-              <div class="row text-center g-2">
-                <div class="col-4">
-                  <h3 class="h5 fw-bold text-info mb-0">150+</h3>
-                  <small class="text-muted" style="font-size: 0.75rem">Students Placed</small>
-                </div>
-                <div class="col-4">
-                  <h3 class="h5 fw-bold text-info mb-0">100%</h3>
-                  <small class="text-muted" style="font-size: 0.75rem">Satisfaction</small>
-                </div>
-                <div class="col-4">
-                  <h3 class="h5 fw-bold text-info mb-0">3 Yrs</h3>
-                  <small class="text-muted" style="font-size: 0.75rem">Experience</small>
-                </div>
+            <div class="row text-center border-top border-secondary pt-4">
+              <div class="col-4 border-end border-secondary">
+                <h4 class="text-yellow fw-bold mb-0">150+</h4>
+                <span class="small text-white-50">Students Placed</span>
+              </div>
+              <div class="col-4 border-end border-secondary">
+                <h4 class="text-yellow fw-bold mb-0">100%</h4>
+                <span class="small text-white-50">Satisfaction</span>
+              </div>
+              <div class="col-4">
+                <h4 class="text-yellow fw-bold mb-0">3 Yrs</h4>
+                <span class="small text-white-50">Experience</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Key Statistics & Experience Banner -->
-    <section class="py-5 bg-dark bg-opacity-20 border-top border-bottom border-secondary border-opacity-10"
-      aria-label="Key achievements">
-      <div class="container text-center">
-        <div class="row justify-content-center g-4">
-          <div class="col-md-3 col-sm-6">
-            <div class="p-3">
-              <h3 class="fw-bold text-info display-6 mb-1">COEP, VJTI, PICT</h3>
-              <span class="text-muted">Direct Placements in Top Hubs</span>
+  <!-- Stats Bar -->
+  <div class="stats-bar py-4">
+    <div class="container">
+      <div class="row text-center g-4">
+        <div class="col-md-3">
+          <h4 class="fw-bold text-primary mb-1">COEP, VJTI</h4>
+          <span class="small text-muted">Direct Placements in Top Hubs</span>
+        </div>
+        <div class="col-md-3">
+          <h4 class="fw-bold text-primary mb-1">15-20</h4>
+          <span class="small text-muted">Low Percentile Spot Allocations</span>
+        </div>
+        <div class="col-md-3">
+          <h4 class="fw-bold text-primary mb-1">100%</h4>
+          <span class="small text-muted">Transparent Fee Structure</span>
+        </div>
+        <div class="col-md-3">
+          <h4 class="fw-bold text-primary mb-1">PICT</h4>
+          <span class="small text-muted">Top-Tier Tech Placements</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Packages Section -->
+  <section id="packages" class="py-5 my-4 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold mb-3 brand-font">Our Counseling Packages</h2>
+        <p class="text-muted mx-auto" style="max-width: 600px;">
+          Choose the program that fits your goals. Register today and contact our counselor team for pricing and enrollment details.
+        </p>
+      </div>
+
+      <div class="row justify-content-center g-4">
+        <!-- Package 1 -->
+        <div class="col-md-5 col-lg-4">
+          <div class="pricing-card p-4 h-100 d-flex flex-column">
+            <div class="mb-4">
+              <span class="badge bg-light text-muted border px-3 py-2 rounded-pill mb-3">Basic Package</span>
+              <div class="d-flex justify-content-between align-items-end mb-3">
+                <h3 class="fw-bold mb-0 brand-font">Form Assist</h3>
+                <div class="text-end">
+                  <span class="fs-3 fw-bold text-primary">₹1500/-</span>
+                  <div class="small text-muted">Standard Support</div>
+                </div>
+              </div>
+              <p class="text-muted small">Standard Cap Round support with preference list generation.</p>
             </div>
+            
+            <ul class="list-unstyled mb-4 flex-grow-1">
+              <li class="mb-3 d-flex"><i class="bi bi-check-circle text-success me-2 mt-1"></i><span class="text-muted small">Option list</span></li>
+              <li class="mb-3 d-flex"><i class="bi bi-check-circle text-success me-2 mt-1"></i><span class="text-muted small">Cutoff analysis</span></li>
+              <li class="mb-3 d-flex"><i class="bi bi-check-circle text-success me-2 mt-1"></i><span class="text-muted small">General Sessions</span></li>
+            </ul>
+            <a href="/register" class="btn btn-outline-custom w-100 text-primary border-primary">Get Started</a>
           </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="p-3">
-              <h3 class="fw-bold text-info display-6 mb-1">15-20</h3>
-              <span class="text-muted">Low Percentile Spot Allocations</span>
+        </div>
+
+        <!-- Package 2 -->
+        <div class="col-md-5 col-lg-4">
+          <div class="pricing-card popular p-4 h-100 d-flex flex-column position-relative overflow-hidden">
+            <div class="position-absolute top-0 end-0 bg-warning text-dark fw-bold small px-4 py-1" style="transform: rotate(45deg) translate(25px, -15px); width: 150px; text-align: center;">RECOMMENDED</div>
+            <div class="mb-4">
+              <span class="badge bg-primary text-white px-3 py-2 rounded-pill mb-3">Popular</span>
+              <div class="d-flex justify-content-between align-items-end mb-3">
+                <h3 class="fw-bold mb-0 brand-font">Premium Counseling</h3>
+                <div class="text-end">
+                  <span class="fs-3 fw-bold text-primary">₹3000/-</span>
+                  <div class="small text-muted">Complete Support</div>
+                </div>
+              </div>
+              <p class="text-muted small">Complete end-to-end guidance from Cap Rounds to Spot Rounds.</p>
             </div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="p-3">
-              <h3 class="fw-bold text-info display-6 mb-1">100%</h3>
-              <span class="text-muted">Transparent Fee Structure</span>
-            </div>
+            
+            <ul class="list-unstyled mb-4 flex-grow-1">
+              <li class="mb-3 d-flex"><i class="bi bi-check-circle text-success me-2 mt-1"></i><span class="text-muted small fw-medium">Unlimited preference list updates</span></li>
+              <li class="mb-3 d-flex"><i class="bi bi-check-circle text-success me-2 mt-1"></i><span class="text-muted small">Personalized category/caste cutoff analysis</span></li>
+              <li class="mb-3 d-flex"><i class="bi bi-check-circle text-success me-2 mt-1"></i><span class="text-muted small fw-medium">Live 1-on-1 counseling via Google Meet</span></li>
+              <li class="mb-3 d-flex"><i class="bi bi-check-circle text-success me-2 mt-1"></i><span class="text-muted small">Spot Round admission strategy guides</span></li>
+              <li class="mb-3 d-flex"><i class="bi bi-check-circle text-success me-2 mt-1"></i><span class="text-muted small">Emergency WhatsApp support for form locks</span></li>
+            </ul>
+            <a href="/register" class="btn btn-primary-custom w-100">Enroll in Premium</a>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Services / Packages Section -->
-    <section id="packages" class="py-5 my-5" aria-label="Counseling packages">
-      <div class="container">
-        <div class="text-center mb-5">
-          <h2 class="display-5 fw-bold text-light mb-3">Our Counseling Packages</h2>
-          <p class="lead text-muted mx-auto" style="max-width: 600px;">
-            Choose the program that fits your goals. Register today and contact our counselor team for pricing and
-            enrollment details.
-          </p>
-        </div>
-
-        <div class="row justify-content-center g-4">
-          <!-- Package 1: Basic / Form Assist -->
-          <div class="col-md-5 col-lg-4">
-            <article class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+      
+      <!-- Contact Banner -->
+      <div class="row justify-content-center mt-5">
+        <div class="col-lg-8">
+          <div class="bg-dark rounded-4 p-4 d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <div class="mb-3 mb-md-0 d-flex align-items-center">
+              <div class="bg-white bg-opacity-10 p-3 rounded text-success me-3"><i class="bi bi-chat-dots fs-4"></i></div>
               <div>
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                  <span class="badge bg-secondary bg-opacity-25 text-light px-3 py-2 rounded">Basic Package</span>
-                </div>
-                <h3 class="fw-bold mb-2">Form Assist</h3>
-                <div class="mb-3">
-                  <span class="fs-4 fw-bold text-light">₹1500/-</span>
-                </div>
-                <p class="text-muted small">Standard Cap Round support with preference list generation.</p>
-                <hr class="border-secondary opacity-25 my-4">
-                <ul class="list-unstyled my-4 text-muted d-flex flex-column gap-3">
-                  <li><i class="bi bi-check-circle-fill text-info me-2" aria-hidden="true"></i>Option list</li>
-                  <li><i class="bi bi-check-circle-fill text-info me-2" aria-hidden="true"></i>Cutoff analysis</li>
-                  <li><i class="bi bi-check-circle-fill text-info me-2" aria-hidden="true"></i>General Sessions</li>
-                </ul>
+                <h5 class="text-white fw-bold mb-1">Interested? Contact Us for Pricing & Details</h5>
+                <span class="text-white-50 small">Reach out via phone or WhatsApp to know about the process.</span>
               </div>
-              <a href="/register" class="btn btn-secondary-custom w-100">Get Started</a>
-            </article>
+            </div>
+            <div class="d-flex gap-2">
+              <a href="tel:+919011388302" class="btn btn-outline-light btn-sm d-flex align-items-center"><i class="bi bi-telephone-fill me-2"></i> Call Us: +91 90113 88302</a>
+              <a href="https://wa.me/919011388302" class="btn btn-success btn-sm d-flex align-items-center"><i class="bi bi-whatsapp me-2"></i> WhatsApp Us</a>
+            </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <!-- Package 2: Premium Counseling -->
-          <div class="col-md-5 col-lg-4">
-            <article
-              class="glass-card p-4 h-100 d-flex flex-column justify-content-between border border-info border-opacity-40"
-              style="background: rgba(30, 41, 59, 0.9);">
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold mb-3 brand-font">Testimonials & Past Results</h2>
+        <p class="text-muted mx-auto" style="max-width: 600px;">
+          Hear from students who successfully secured admissions in top Maharashtra colleges, even with modest MHT CET percentiles.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Testimonial 1 -->
+        <div class="col-md-4">
+          <div class="testimonial-card p-4 h-100 d-flex flex-column justify-content-between">
+            <p class="text-muted small fst-italic mb-4">
+              "We were completely lost regarding Cap Round 3 and Spot Admissions. With my son's 84.5%ile, we thought VJTI or COEP was completely out of reach. Saksham Pravesh analyzed the vacancy sheets and category lists, helping him secure <strong class="text-primary">COEP Mechanical</strong>. A miracle for our family!"
+            </p>
+            <div class="d-flex align-items-center">
+              <div class="rounded-circle border border-primary text-primary d-flex align-items-center justify-content-center fw-bold me-3" style="width:40px; height:40px;">RP</div>
               <div>
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                  <span class="badge bg-info bg-opacity-25 text-info px-3 py-2 rounded">Popular</span>
-                  <span class="badge bg-warning text-dark px-2 py-1 rounded shadow-sm fw-bold"
-                    style="font-size: 0.75rem; letter-spacing: 0.5px;">RECOMMENDED</span>
-                </div>
-                <h3 class="fw-bold mb-2">Premium Counseling</h3>
-                <div class="mb-3">
-                  <span class="fs-4 fw-bold text-light">₹3000/-</span>
-                </div>
-                <p class="text-muted small">Complete end-to-end guidance from Cap Rounds to Spot Rounds.</p>
-                <hr class="border-secondary opacity-25 my-4">
-                <ul class="list-unstyled my-4 text-muted d-flex flex-column gap-3">
-                  <li><i class="bi bi-check-circle-fill text-info me-2"
-                      aria-hidden="true"></i><strong>Unlimited</strong> preference list updates</li>
-                  <li><i class="bi bi-check-circle-fill text-info me-2" aria-hidden="true"></i>Personalized
-                    category/caste cutoff analysis</li>
-                  <li><i class="bi bi-check-circle-fill text-info me-2" aria-hidden="true"></i><strong>Live 1-on-1
-                      counseling via Google Meet</strong></li>
-                  <li><i class="bi bi-check-circle-fill text-info me-2" aria-hidden="true"></i>Spot Round admission
-                    strategy guides</li>
-                  <li><i class="bi bi-check-circle-fill text-info me-2" aria-hidden="true"></i>Emergency WhatsApp
-                    support for form locks</li>
-                </ul>
+                <h6 class="fw-bold mb-0 text-dark small">Rajesh Patil</h6>
+                <div class="text-muted" style="font-size: 0.7rem;">Parent of Rohit Patil</div>
+                <div class="text-primary fw-medium" style="font-size: 0.7rem;">COEP Mechanical - 84.5%ile</div>
               </div>
-              <a href="/register" class="btn btn-primary-custom w-100">Enroll in Premium</a>
-            </article>
+            </div>
           </div>
         </div>
-
-        <!-- Contact for Pricing CTA -->
-        <div class="mt-5 p-4 glass-card text-center border border-info border-opacity-20">
-          <h3 class="h5 fw-bold text-light mb-2"><i class="bi bi-chat-dots-fill me-2 text-info"
-              aria-hidden="true"></i>Interested? Contact Us for Pricing & Details</h3>
-          <p class="text-muted small mb-4">
-            Reach out to our counselor team directly via phone or WhatsApp to learn about pricing, payment options, and
-            enrollment process.
-          </p>
-          <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
-            <a href="tel:+919011388302" class="btn btn-secondary-custom" aria-label="Call us at +91 90113 88302">
-              <i class="bi bi-telephone-fill me-2" aria-hidden="true"></i>Call Us: +91 90113 88302
-            </a>
-            <a href="https://wa.me/919011388302?text=Hi%2C%20I%20am%20interested%20in%20Saksham%20Pravesh%20counseling%20packages.%20Please%20share%20pricing%20details."
-              target="_blank" rel="noopener noreferrer" class="btn btn-primary-custom"
-              aria-label="Message us on WhatsApp">
-              <i class="bi bi-whatsapp me-2" aria-hidden="true"></i>WhatsApp Us
-            </a>
+        <!-- Testimonial 2 -->
+        <div class="col-md-4">
+          <div class="testimonial-card p-4 h-100 d-flex flex-column justify-content-between shadow-sm border-primary border-opacity-25">
+            <p class="text-muted small fst-italic mb-4">
+              "Most counseling services only work for 99+ percentile students. Saksham Pravesh specializes in students who scored in the 80s and 90s. Their team made a custom list and guided us on which colleges to choose. Secured IT branch at <strong class="text-primary">VJTI</strong> in the spot round!"
+            </p>
+            <div class="d-flex align-items-center">
+              <div class="rounded-circle border border-primary text-primary d-flex align-items-center justify-content-center fw-bold me-3" style="width:40px; height:40px;">SD</div>
+              <div>
+                <h6 class="fw-bold mb-0 text-dark small">Sneha Deshmukh</h6>
+                <div class="text-muted" style="font-size: 0.7rem;">Student</div>
+                <div class="text-primary fw-medium" style="font-size: 0.7rem;">VJTI IT - 91.2%ile</div>
+              </div>
+            </div>
           </div>
         </div>
-
-      </div>
-    </section>
-
-    <!-- Testimonials & Past Results Section -->
-    <section id="testimonials"
-      class="py-5 my-5 bg-dark bg-opacity-30 border-top border-bottom border-secondary border-opacity-10"
-      aria-label="Student testimonials and results">
-      <div class="container">
-        <div class="text-center mb-5">
-          <h2 class="display-5 fw-bold text-light mb-3">Testimonials & Past Results</h2>
-          <p class="lead text-muted mx-auto" style="max-width: 600px;">
-            Hear from students who successfully secured admissions in top Maharashtra colleges, even with modest MHT CET
-            percentiles.
-          </p>
-        </div>
-
-        <div class="row g-4">
-          <!-- Testimonial 1 -->
-          <div class="col-md-6 col-lg-4">
-            <article class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
-              <blockquote class="text-muted mb-4">
-                "We were completely lost regarding Cap Round 3 and Spot Admissions. With my son's 84.5%ile, we thought
-                VJTI or COEP was completely out of reach. Saksham Pravesh analyzed the vacancy sheets and category
-                lists, helping him secure <strong>COEP Mechanical</strong>. A miracle for our family!"
-              </blockquote>
-              <div class="d-flex align-items-center gap-3">
-                <div class="testimonial-avatar" aria-hidden="true">RP</div>
-                <div>
-                  <h4 class="h6 mb-0 text-light fw-bold">Rajesh Patil</h4>
-                  <small class="text-muted d-block">Parent of Rohit Patil</small>
-                  <span class="percentile-badge">COEP Mechanical - 84.5%ile</span>
-                </div>
+        <!-- Testimonial 3 -->
+        <div class="col-md-4">
+          <div class="testimonial-card p-4 h-100 d-flex flex-column justify-content-between">
+            <p class="text-muted small fst-italic mb-4">
+              "My daughter had 89.0%ile and wanted Computer Science. Other counselors said she would only get lower-tier colleges in remote districts. Saksham Pravesh made an excellent preference list which resulted in her getting <strong class="text-primary">PICT Computer Engineering</strong>. Absolutely worth every rupee!"
+            </p>
+            <div class="d-flex align-items-center">
+              <div class="rounded-circle border border-primary text-primary d-flex align-items-center justify-content-center fw-bold me-3" style="width:40px; height:40px;">AS</div>
+              <div>
+                <h6 class="fw-bold mb-0 text-dark small">Amit Shinde</h6>
+                <div class="text-muted" style="font-size: 0.7rem;">Parent of Priya Shinde</div>
+                <div class="text-primary fw-medium" style="font-size: 0.7rem;">PICT CS - 89.0%ile</div>
               </div>
-            </article>
-          </div>
-
-          <!-- Testimonial 2 -->
-          <div class="col-md-6 col-lg-4">
-            <article class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
-              <blockquote class="text-muted mb-4">
-                "Most counseling services only work for 99+ percentile students. Saksham Pravesh specializes in students
-                who scored in the 80s and 90s. Their team made a custom list and guided us on which colleges to choose.
-                Secured IT branch at VJTI in the spot round!"
-              </blockquote>
-              <div class="d-flex align-items-center gap-3">
-                <div class="testimonial-avatar text-info" aria-hidden="true">SD</div>
-                <div>
-                  <h4 class="h6 mb-0 text-light fw-bold">Sneha Deshmukh</h4>
-                  <small class="text-muted d-block">Student</small>
-                  <span class="percentile-badge">VJTI IT - 91.2%ile</span>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <!-- Testimonial 3 -->
-          <div class="col-md-6 col-lg-4">
-            <article class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
-              <blockquote class="text-muted mb-4">
-                "My daughter had 89.0%ile and wanted Computer Science. Other counselors said she would only get
-                lower-tier colleges in remote districts. Saksham Pravesh made an excellent preference list which
-                resulted in her getting <strong>PICT Computer Engineering</strong>. Absolutely worth every rupee!"
-              </blockquote>
-              <div class="d-flex align-items-center gap-3">
-                <div class="testimonial-avatar text-info" aria-hidden="true">AS</div>
-                <div>
-                  <h4 class="h6 mb-0 text-light fw-bold">Amit Shinde</h4>
-                  <small class="text-muted d-block">Parent of Priya Shinde</small>
-                  <span class="percentile-badge">PICT CS - 89.0%ile</span>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <!-- Testimonial 4 -->
-          <div class="col-md-6 col-lg-4">
-            <article class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
-              <blockquote class="text-muted mb-4">
-                "Through their expert guidelines on OBC reservation benefits and cutoff trends, we successfully
-                converted a pending status into a branch change seat at VIT Pune. Highly transparent!"
-              </blockquote>
-              <div class="d-flex align-items-center gap-3">
-                <div class="testimonial-avatar" aria-hidden="true">KB</div>
-                <div>
-                  <h4 class="h6 mb-0 text-light fw-bold">Kiran Bhise</h4>
-                  <small class="text-muted d-block">Student</small>
-                  <span class="percentile-badge">VIT Pune Mech - 81.3%ile</span>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <!-- Testimonial 5 -->
-          <div class="col-md-6 col-lg-4">
-            <article class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
-              <blockquote class="text-muted mb-4">
-                "They helped us understand how seats remain vacant in top-tier colleges and how to capture them in late
-                August. Excellent strategy that got my son a seat in DY Patil Akurdi CSE!"
-              </blockquote>
-              <div class="d-flex align-items-center gap-3">
-                <div class="testimonial-avatar text-info" aria-hidden="true">MK</div>
-                <div>
-                  <h4 class="h6 mb-0 text-light fw-bold">Milind Kulkarni</h4>
-                  <small class="text-muted d-block">Parent of Shreyas Kulkarni</small>
-                  <span class="percentile-badge">DY Patil CSE - 79.5%ile</span>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <!-- Testimonial 6 -->
-          <div class="col-md-6 col-lg-4">
-            <article class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
-              <blockquote class="text-muted mb-4">
-                "Highly professional counselors with over 3 years of deep hands-on expertise in MHT CET guidelines. I
-                recommend them to every parent looking for authentic, stress-free admissions."
-              </blockquote>
-              <div class="d-flex align-items-center gap-3">
-                <div class="testimonial-avatar text-info" aria-hidden="true">AG</div>
-                <div>
-                  <h4 class="h6 mb-0 text-light fw-bold">Anjali Gokhale</h4>
-                  <small class="text-muted d-block">Parent of Tanvi Gokhale</small>
-                  <span class="percentile-badge">Cummins Pune CS - 92.4%ile</span>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <div class="mt-5 p-4 glass-card text-center border border-info border-opacity-20">
-          <h3 class="h5 fw-bold text-info"><i class="bi bi-info-circle-fill me-2" aria-hidden="true"></i>15-20 Students
-            Placed Annually at Low Percentiles</h3>
-          <p class="text-muted small mb-0 mt-2">
-            Through strategic option form styling, spot round optimization, and vacant seat forecasting, we guide our
-            registered students to premier government and private engineering institutes throughout Maharashtra.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-5 my-5 text-center" aria-label="Call to action">
-      <div class="container py-4 glass-card border border-info border-opacity-35 bg-gradient-brand">
-        <div class="py-4 px-3">
-          <h2 class="fw-bold text-white mb-3 display-6">Secure Your Future Today</h2>
-          <p class="text-white-50 lead mx-auto mb-4" style="max-width: 600px;">
-            Register and submit your MHT CET preferences. Complete your enrollment, and a dedicated counselor will
-            verify your profile and schedule your private Google Meet.
-          </p>
-          <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
-            <a href="/register" class="btn btn-light btn-lg text-dark fw-bold px-5 rounded-pill shadow">
-              Create Account & Register <i class="bi bi-box-arrow-in-right ms-1" aria-hidden="true"></i>
-            </a>
-            <a href="https://wa.me/919011388302?text=Hi%2C%20I%20am%20interested%20in%20Saksham%20Pravesh%20counseling."
-              target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-lg px-4 rounded-pill"
-              aria-label="Chat with us on WhatsApp">
-              <i class="bi bi-whatsapp me-2" aria-hidden="true"></i>Chat on WhatsApp
-            </a>
-            <a href="https://www.youtube.com/channel/UC3swZ33081xBUKOtT-xbA_w"
-              target="_blank" rel="noopener noreferrer" class="btn btn-outline-danger btn-lg px-4 rounded-pill text-white border-white border-opacity-50 hover-danger"
-              aria-label="Subscribe to our YouTube Channel">
-              <i class="bi bi-youtube me-2" aria-hidden="true"></i>Our YouTube
-            </a>
+            </div>
           </div>
         </div>
       </div>
-    </section>
-  </main>
+      
+      <!-- Logos Section -->
+      <div class="d-flex justify-content-between align-items-center mt-5 pt-4 border-top opacity-50 text-muted fw-bold">
+        <h4 class="m-0">COEP</h4>
+        <h4 class="m-0">VJTI</h4>
+        <h4 class="m-0">PICT</h4>
+        <h4 class="m-0">SPIT</h4>
+        <h4 class="m-0">VIT PUNE</h4>
+        <h4 class="m-0">WCE</h4>
+      </div>
+    </div>
+  </section>
 
-  <!-- Footer -->
-  <footer class="py-4 border-top border-secondary border-opacity-10">
-    <div class="container text-center text-muted">
-      <div class="mb-3">
-        <a href="https://www.youtube.com/channel/UC3swZ33081xBUKOtT-xbA_w" target="_blank" rel="noopener noreferrer" class="text-danger text-decoration-none mx-2 fs-4" aria-label="YouTube Channel">
-          <i class="bi bi-youtube" aria-hidden="true"></i>
+  <!-- CTA Footer Section -->
+  <footer class="footer-section pt-5 pb-4 mt-5">
+    <div class="container text-center pt-4 pb-5 border-bottom border-secondary border-opacity-50">
+      <h2 class="fw-bold text-white mb-3 brand-font">Secure Your Future Today</h2>
+      <p class="text-white-50 mx-auto mb-4 small" style="max-width: 600px;">
+        Register and submit your MHT CET preferences. Complete your enrollment, and a dedicated counselor will verify your profile and schedule your private Google Meet.
+      </p>
+      <div class="d-flex justify-content-center gap-3 mb-5">
+        <a href="/register" class="btn btn-light rounded-pill px-4 py-2 fw-medium d-flex align-items-center">
+          Create Account & Register <i class="bi bi-box-arrow-in-right ms-2 text-primary"></i>
+        </a>
+        <a href="https://wa.me/919011388302" class="btn btn-outline-light rounded-pill px-4 py-2 d-flex align-items-center">
+          <i class="bi bi-chat me-2"></i> Chat on WhatsApp
         </a>
       </div>
-      <p class="mb-1">&copy; 2026 Saksham Pravesh Counseling Platform. All rights reserved.</p>
-      <p class="small mb-0">MHT CET counseling & engineering admission guidance for Maharashtra students.</p>
+      <a href="#" class="text-danger text-decoration-none small d-flex justify-content-center align-items-center mx-auto border border-secondary rounded-pill py-2 px-3" style="width: max-content;">
+        <i class="bi bi-youtube me-2"></i> Our YouTube <span class="text-white-50 ms-2" style="font-size: 0.7rem;">subscribe for regular admission updates</span>
+      </a>
+    </div>
+    
+    <div class="container mt-4 pt-2">
+      <div class="row">
+        <div class="col-md-5 mb-4 mb-md-0">
+          <a class="navbar-brand brand-font text-white fw-bold fs-5 d-flex align-items-center mb-2" href="/">
+            <img src="/images/logo.png" alt="Logo" height="24" class="me-2" style="filter: brightness(0) invert(1);">
+            Saksham Pravesh
+          </a>
+          <p class="text-white-50 small pe-md-5" style="font-size: 0.75rem;">
+            Professional admission guidance for Maharashtra Engineering Colleges. Helping students navigate the MHT CET process with precision and strategy.
+          </p>
+        </div>
+        <div class="col-md-2 col-6">
+          <h6 class="text-white fw-bold mb-3 small">Company</h6>
+          <ul class="list-unstyled text-white-50 small" style="font-size: 0.75rem;">
+            <li class="mb-2"><a href="#" class="text-white-50">About Us</a></li>
+            <li class="mb-2"><a href="#" class="text-white-50">Contact Us</a></li>
+            <li class="mb-2"><a href="#" class="text-white-50">Testimonials</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-6">
+          <h6 class="text-white fw-bold mb-3 small">Legal</h6>
+          <ul class="list-unstyled text-white-50 small" style="font-size: 0.75rem;">
+            <li class="mb-2"><a href="#" class="text-white-50">Terms of Service</a></li>
+            <li class="mb-2"><a href="#" class="text-white-50">Privacy Policy</a></li>
+            <li class="mb-2"><a href="#" class="text-white-50">Disclaimer</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h6 class="text-white fw-bold mb-3 small">Support</h6>
+          <ul class="list-unstyled text-white-50 small" style="font-size: 0.75rem;">
+            <li class="mb-2"><a href="#" class="text-white-50">Help Center</a></li>
+            <li class="mb-2"><a href="#" class="text-white-50">FAQs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-4 pt-3 border-top border-secondary border-opacity-50 text-white-50" style="font-size: 0.7rem;">
+        <p class="mb-0">&copy; 2026 Saksham Pravesh. All rights reserved. MHT CET counseling & engineering admission guidance for Maharashtra students.</p>
+        <div class="d-flex gap-3 mt-2 mt-md-0">
+          <a href="#" class="text-white-50"><i class="bi bi-youtube"></i></a>
+          <a href="#" class="text-white-50"><i class="bi bi-envelope"></i></a>
+          <a href="#" class="text-white-50"><i class="bi bi-share"></i></a>
+        </div>
+      </div>
     </div>
   </footer>
 
-  <!-- Bootstrap 5 Bundle JS CDN -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
