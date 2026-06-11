@@ -363,6 +363,40 @@ router.post('/resource', uploadResourceAttachment.single('resource_file'), async
   }
 });
 
+// @route   POST /api/admin/link
+// @desc    Add a new external link and notify students
+// @access  Private (Admin only)
+router.post('/link', async (req, res) => {
+  try {
+    const { title, description, url } = req.body;
+
+    if (!title || !url) {
+      return res.status(400).json({ error: 'Title and URL are required.' });
+    }
+
+    // 1. Insert into resources
+    const [resourceResult] = await db.execute(
+      'INSERT INTO resources (title, description, file_path) VALUES (?, ?, ?)',
+      [title.trim(), description ? description.trim() : null, url.trim()]
+    );
+
+    // 2. Automatically publish notice
+    await db.execute(
+      'INSERT INTO notices (title, attachment_path) VALUES (?, ?)',
+      [`New Link Added: ${title.trim()}`, url.trim()]
+    );
+
+    return res.status(201).json({
+      success: true,
+      message: 'Link added successfully!',
+      resourceId: resourceResult.insertId
+    });
+  } catch (error) {
+    console.error('Admin Add Link Error:', error);
+    return res.status(500).json({ error: 'Internal server error adding link.' });
+  }
+});
+
 // @route   POST /api/admin/progress/:id
 // @desc    Update progress step for a student
 // @access  Private (Admin only)

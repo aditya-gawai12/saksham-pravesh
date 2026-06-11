@@ -247,6 +247,53 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    // Handle Link Form submission
+    const linkForm = document.getElementById('link-form');
+    if (linkForm) {
+      linkForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const title = document.getElementById('link-title').value.trim();
+        const description = document.getElementById('link-desc').value.trim();
+        const url = document.getElementById('link-url').value.trim();
+        const msgDiv = document.getElementById('link-message');
+
+        msgDiv.className = 'alert d-none';
+        msgDiv.textContent = '';
+
+        if (!url) {
+          msgDiv.className = 'alert alert-danger';
+          msgDiv.textContent = 'Please provide a valid URL.';
+          msgDiv.classList.remove('d-none');
+          return;
+        }
+
+        try {
+          const response = await fetch('/api/admin/link', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title, description, url })
+          });
+          const data = await response.json();
+
+          if (response.ok && data.success) {
+            msgDiv.className = 'alert alert-success';
+            msgDiv.textContent = 'Link added and notice published!';
+            linkForm.reset();
+            setTimeout(() => { msgDiv.classList.add('d-none'); }, 3000);
+          } else {
+            msgDiv.className = 'alert alert-danger';
+            msgDiv.textContent = data.error || 'Could not add link.';
+          }
+          msgDiv.classList.remove('d-none');
+        } catch (err) {
+          console.error('Link add error:', err);
+          msgDiv.className = 'alert alert-danger';
+          msgDiv.textContent = 'Server communications failed.';
+          msgDiv.classList.remove('d-none');
+        }
+      });
+    }
+
     // Handle Receipt Upload
     const uploadReceiptBtn = document.getElementById('upload-receipt-btn');
     if (uploadReceiptBtn) {
