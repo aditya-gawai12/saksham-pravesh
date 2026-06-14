@@ -95,9 +95,17 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Frontend strict email validation
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       if (!emailRegex.test(email)) {
         errorDiv.textContent = 'Invalid email address format. Please provide a valid email.';
+        errorDiv.classList.remove('d-none');
+        return;
+      }
+
+      // Frontend phone number validation
+      const phoneRegex = /^[0-9]{10}$/;
+      if (!phoneRegex.test(phone_number)) {
+        errorDiv.textContent = 'Invalid phone number format. Please provide a valid 10-digit phone number.';
         errorDiv.classList.remove('d-none');
         return;
       }
@@ -691,7 +699,7 @@ function renderStudentsTable(students) {
       
       row.innerHTML = `
         <td>
-          <div class="fw-bold text-light">${escapeHtml(student.full_name)}</div>
+          <div class="fw-bold text-dark">${escapeHtml(student.full_name)}</div>
           <small class="text-muted">Registered: ${createdDate}</small>
         </td>
         <td>
@@ -702,7 +710,7 @@ function renderStudentsTable(students) {
           <span class="percentile-badge">${parseFloat(student.mht_cet_percentile).toFixed(2)}%ile</span>
         </td>
         <td>
-          <span class="badge ${isPremium ? 'bg-info bg-opacity-20 text-info' : 'bg-secondary bg-opacity-25 text-light'} px-2 py-1" style="font-size: 0.8rem">
+          <span class="badge ${isPremium ? 'bg-info bg-opacity-20 text-info' : 'bg-secondary bg-opacity-25 text-dark'} px-2 py-1" style="font-size: 0.8rem">
             ${isPremium ? '<i class="bi bi-stars me-1"></i>Premium' : '<i class="bi bi-box me-1"></i>Basic'}
           </span>
           <div class="text-muted mt-1" style="font-size: 0.75rem">${escapeHtml(student.category)} · ${escapeHtml(student.preferred_branch)}</div>
