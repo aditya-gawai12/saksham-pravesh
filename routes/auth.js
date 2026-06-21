@@ -2,6 +2,54 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
 
+// Helper function to send WhatsApp automated message using Meta Cloud API
+const sendWhatsAppMessage = async (toPhone, userName) => {
+  try {
+    const token = process.env.WHATSAPP_TOKEN;
+    const phoneId = process.env.WHATSAPP_PHONE_ID;
+    
+    if (!token || !phoneId) {
+      console.log("WhatsApp API credentials missing. Skipping automated message.");
+      return; 
+    }
+    
+    // Format phone number: remove non-digits
+    const cleanPhone = toPhone.replace(/\D/g, '');
+    // Ensure it has country code, default to 91 if length is 10
+    const finalPhone = cleanPhone.length === 10 ? `91${cleanPhone}` : cleanPhone;
+
+    const url = `https://graph.facebook.com/v18.0/${phoneId}/messages`;
+    const payload = {
+      messaging_product: "whatsapp",
+      to: finalPhone,
+      type: "template",
+      template: {
+        name: "hello_world", // You will need to create and approve a template in Meta Dashboard
+        language: { code: "en_US" }
+      }
+    };
+    
+    // Using global fetch (available in Node 18+)
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("WhatsApp API Error Response:", errorData);
+    } else {
+      console.log(`WhatsApp automated message sent to ${finalPhone}`);
+    }
+  } catch (err) {
+    console.error("WhatsApp API Request Error:", err);
+  }
+};
+
 // @route   POST /api/auth/register
 // @desc    Register a new student
 // @access  Public
@@ -23,7 +71,7 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ error: 'All fields are required.' });
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(email.trim())) {
       return res.status(400).json({ error: 'Invalid email address format.' });
     }
@@ -66,6 +114,9 @@ router.post('/register', async (req, res) => {
     req.session.userId = result.insertId;
     req.session.role = 'student';
     req.session.fullName = full_name;
+
+    // 5. Send automated WhatsApp Message (asynchronous, doesn't block response)
+    sendWhatsAppMessage(phone_number, full_name);
 
     return res.status(201).json({
       success: true,
