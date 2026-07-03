@@ -477,15 +477,30 @@ async function loadStudentDashboard() {
       document.getElementById('profile-avatar').textContent = initials;
 
       // Package details
-      const isPremium = data.selectedPackage === 'premium';
-      document.getElementById('package-name').textContent = isPremium ? 'Premium Counseling' : 'Form Assist (Basic)';
+      let packageName = 'Form Assist (Basic)';
+      let packageIconHtml = '<i class="bi bi-box"></i>';
+      
+      if (data.selectedPackage === 'premium') {
+        packageName = 'Premium Counseling';
+        packageIconHtml = '<i class="bi bi-stars"></i>';
+      } else if (data.selectedPackage === 'exclusive') {
+        packageName = 'Form Filling (Exclusive)';
+        packageIconHtml = '<i class="bi bi-pencil-square"></i>';
+      }
+      
+      document.getElementById('package-name').textContent = packageName;
       const packageIcon = document.getElementById('package-icon');
-      packageIcon.innerHTML = isPremium ? '<i class="bi bi-stars"></i>' : '<i class="bi bi-box"></i>';
-      if (isPremium) packageIcon.classList.add('premium');
+      packageIcon.innerHTML = packageIconHtml;
+      
+      if (data.selectedPackage === 'premium') {
+        packageIcon.classList.add('premium');
+      } else {
+        packageIcon.classList.remove('premium');
+      }
 
       // Package features
       const featuresContainer = document.getElementById('package-features');
-      if (isPremium) {
+      if (data.selectedPackage === 'premium') {
         featuresContainer.innerHTML = `
           <div class="row g-2">
             <div class="col-sm-6"><i class="bi bi-check-circle-fill text-info me-1"></i> Unlimited preference list updates</div>
@@ -493,6 +508,13 @@ async function loadStudentDashboard() {
             <div class="col-sm-6"><i class="bi bi-check-circle-fill text-info me-1"></i> Live 1-on-1 Google Meet counseling</div>
             <div class="col-sm-6"><i class="bi bi-check-circle-fill text-info me-1"></i> Spot Round strategy guides</div>
             <div class="col-sm-6"><i class="bi bi-check-circle-fill text-info me-1"></i> Emergency WhatsApp support</div>
+          </div>`;
+      } else if (data.selectedPackage === 'exclusive') {
+        featuresContainer.innerHTML = `
+          <div class="row g-2">
+            <div class="col-sm-6"><i class="bi bi-check-circle-fill text-info me-1"></i> Cap Round preference list filling</div>
+            <div class="col-sm-6"><i class="bi bi-check-circle-fill text-info me-1"></i> Final list execution</div>
+            <div class="col-sm-6"><i class="bi bi-check-circle-fill text-info me-1"></i> Allot-me standard plan free access</div>
           </div>`;
       } else {
         featuresContainer.innerHTML = `
@@ -695,7 +717,19 @@ function renderStudentsTable(students) {
       const createdDate = new Date(student.created_at).toLocaleDateString('en-IN');
       const isApproved = student.payment_status === 'approved';
       const isPremium = student.selected_package === 'premium';
+      const isExclusive = student.selected_package === 'exclusive';
       const hasReceipt = !!student.receipt_path;
+      
+      let packageBadgeClass = 'bg-secondary bg-opacity-25 text-dark';
+      let packageBadgeHtml = '<i class="bi bi-box me-1"></i>Basic';
+      
+      if (isPremium) {
+        packageBadgeClass = 'bg-info bg-opacity-20 text-info';
+        packageBadgeHtml = '<i class="bi bi-stars me-1"></i>Premium';
+      } else if (isExclusive) {
+        packageBadgeClass = 'bg-primary bg-opacity-20 text-primary';
+        packageBadgeHtml = '<i class="bi bi-pencil-square me-1"></i>Exclusive';
+      }
       
       row.innerHTML = `
         <td>
@@ -710,8 +744,8 @@ function renderStudentsTable(students) {
           <span class="percentile-badge">${parseFloat(student.mht_cet_percentile).toFixed(2)}%ile</span>
         </td>
         <td>
-          <span class="badge ${isPremium ? 'bg-info bg-opacity-20 text-info' : 'bg-secondary bg-opacity-25 text-dark'} px-2 py-1" style="font-size: 0.8rem">
-            ${isPremium ? '<i class="bi bi-stars me-1"></i>Premium' : '<i class="bi bi-box me-1"></i>Basic'}
+          <span class="badge ${packageBadgeClass} px-2 py-1" style="font-size: 0.8rem">
+            ${packageBadgeHtml}
           </span>
           <div class="text-muted mt-1" style="font-size: 0.75rem">${escapeHtml(student.category)} · ${escapeHtml(student.preferred_branch)}</div>
         </td>

@@ -82,7 +82,7 @@ router.post('/register', async (req, res) => {
     }
 
     // Validate package selection
-    const validPackages = ['basic', 'premium'];
+    const validPackages = ['exclusive', 'basic', 'premium'];
     const packageChoice = validPackages.includes(selected_package) ? selected_package : 'basic';
 
     // 2. Check if email already exists

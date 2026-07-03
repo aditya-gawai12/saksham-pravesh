@@ -90,14 +90,21 @@
             <div class="mb-4">
               <label class="form-label text-dark fw-bold small">Select Counseling Package</label>
               <div class="row g-3">
-                <div class="col-sm-6">
+                <div class="col-md-4">
+                  <input type="radio" class="btn-check" name="selected_package" id="package-exclusive" value="exclusive" autocomplete="off">
+                  <label class="btn btn-outline-secondary w-100 p-3 text-start border bg-light h-100" for="package-exclusive" style="border-radius:12px;">
+                    <div class="fw-bold text-dark mb-1"><i class="bi bi-pencil-square me-2"></i>Form Filling</div>
+                    <small class="text-muted d-block">Cap Round preference filling</small>
+                  </label>
+                </div>
+                <div class="col-md-4">
                   <input type="radio" class="btn-check" name="selected_package" id="package-basic" value="basic" autocomplete="off" checked>
                   <label class="btn btn-outline-secondary w-100 p-3 text-start border bg-light h-100" for="package-basic" style="border-radius:12px;">
                     <div class="fw-bold text-dark mb-1"><i class="bi bi-box me-2"></i>Form Assist</div>
                     <small class="text-muted d-block">Basic Cap Round support</small>
                   </label>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-md-4">
                   <input type="radio" class="btn-check" name="selected_package" id="package-premium" value="premium" autocomplete="off">
                   <label class="btn btn-outline-primary w-100 p-3 text-start border bg-light h-100" for="package-premium" style="border-radius:12px;">
                     <div class="fw-bold text-primary mb-1"><i class="bi bi-stars me-2"></i>Premium</div>
